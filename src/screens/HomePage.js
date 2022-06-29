@@ -1,11 +1,33 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from "../components/Navbar";
 import { BsArrowRight } from "react-icons/bs";
 import Card from "../components/Card";
 import Card2 from "../components/Card2";
 import Card3 from "../components/Card3";
+import PayButton from "../components/PayButton";
+import { useSelector, useDispatch } from "react-redux";
+import {fetchPosts, fetchPost} from '../features/postSlice';
 
 function HomePage(props) {
+    const dispatch = useDispatch();
+  const { loading, error, success, posts, post } = useSelector(
+    (state) => state.blogPost
+  );
+//   const [id, setId] = useState('')
+
+  
+
+  useEffect(()=>{
+    dispatch(fetchPosts())
+  }, [])
+
+//   useEffect(()=>{
+//     // console.log("================")
+//     dispatch(fetchPost(2344293))
+//   },[])
+
+  console.log(loading, error, success, posts, post)
+
   return (
     <>
       <Navbar />
@@ -55,7 +77,16 @@ function HomePage(props) {
           <Card3 />
           {/* <p>thhe</p> */}
         </div>
-        <footer></footer>
+        <footer>
+          <h2 className="footer-header">Join our Team of Writers</h2>
+          <p className="footer-body">
+            On dasdas, writers earn a living doing what they love. Getting
+            started is easy. Just pay a one time $25 fee and everything is ready
+            to go.
+          </p>
+
+          <PayButton />
+        </footer>
       </main>
     </>
   );
