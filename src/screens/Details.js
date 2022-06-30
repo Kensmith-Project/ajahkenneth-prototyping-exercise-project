@@ -13,7 +13,8 @@ function Details({}) {
   const { post, posts, loading } = useSelector((state) => state.blogPost);
 
   useEffect(() => {
-    dispatch(fetchPost(detailsid));
+    
+      dispatch(fetchPost(detailsid));
   }, []);
   console.log(post);
   return (

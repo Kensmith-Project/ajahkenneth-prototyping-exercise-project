@@ -19,7 +19,9 @@ function HomePage(props) {
   //   const [id, setId] = useState('')
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    if (posts.length < 1) {
+      dispatch(fetchPosts());
+    }
   }, []);
 
   //   useEffect(()=>{
