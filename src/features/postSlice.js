@@ -9,55 +9,78 @@ const initialState = {
   post: {},
 };
 
-export const fetchPosts = createAsyncThunk('blog/post', async(_, thunkAPI)=>{
-    try{
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`)
-        
-        return response.data
-    }catch(error){
+export const fetchPosts = createAsyncThunk("blog/post", async (_, thunkAPI) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`);
 
-        const message = error.response && error.response.data || error.toString();
+    return response.data;
+  } catch (error) {
+    const message = (error.response && error.response.data) || error.toString();
 
-        return thunkAPI.rejectWithValue(message);
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const fetchPost = createAsyncThunk(
+  "get/blog/post",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/posts/${id}`
+      );
+
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response && error.response.data) || error.toString();
+
+      return thunkAPI.rejectWithValue(message);
     }
-})
-
-
-
+  }
+);
 
 export const postSlice = createSlice({
-    name: 'post',
-    initialState,
-    reducers:{
-        fetchPost: (state, action)=>{
-            console.log(state.posts)
-            const postArr = state.posts.map(post => post.id === action.payload);
-            state.post = postArr.length > 0 ? postArr[0]: {};
-        },
-    },
-    extraReducers:(builder)=>{
-        builder
-        .addCase(fetchPosts.pending, (state)=>{
-            state.loading = true
-        })
-        .addCase(fetchPosts.rejected, (state, action)=>{
-            state.error = true;
-            state.loading = false;
-            state.message = action.payload 
+  name: "post",
+  initialState,
+  reducers: {
+    // fetchPost: (state, action) => {
+    //   const postArr = state.posts.map((post) => post.id === action.payload);
+    //   // state.post = postArr.length > 0 ? postArr[0] : {};
+    //   state.post = postArr
+    //   console.log(state.post);
+    // },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPosts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchPosts.rejected, (state, action) => {
+        state.error = true;
+        state.loading = false;
+        state.message = action.payload;
+      })
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.posts = action.payload;
+      })
+      .addCase(fetchPost.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(fetchPost.rejected, (state, action) => {
+        state.error = true;
+        state.loading = false;
+        state.message = action.payload;
+      })
+      .addCase(fetchPost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.post = action.payload;
+      });
+  },
+});
 
-            console.log(action.payload)
-
-        })
-        .addCase(fetchPosts.fulfilled, (state, action)=>{
-            state.loading = false;
-            state.success = true;
-            state.posts = action.payload;
-        })
-    }
-
-})
-
-
-export const {fetchPost} = postSlice.actions;
+export const {} = postSlice.actions;
 
 export default postSlice.reducer;

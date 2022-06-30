@@ -37,17 +37,17 @@ const Navbar = () => {
         </div>
         <div className="links-container" ref={linksContainerRef}>
           <ul className="links" ref={linksRef}>
-            {links.map((link) => {
-              const { id, url, text } = link;
+            {social.map((link) => {
+              const { id, url, icon } = link;
               return (
                 <li key={id}>
-                  <a href={url}>{text}</a>
+                  <a href={url}>{icon}</a>
                 </li>
               );
             })}
           </ul>
         </div>
-        <ul className="social-icons">
+        {/* <ul className="social-icons">
           {social.map((socialIcon) => {
             const { id, url, icon } = socialIcon;
             return (
@@ -56,7 +56,7 @@ const Navbar = () => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </div>
     </nav>
   );

@@ -38,7 +38,91 @@ function HomePage(props) {
   return (
     <>
       <Navbar />
-      <div className="container">
+
+      <main>
+        <section className="section">
+          <section>
+            <section className="section-1">
+              <div className="img-container">
+                <img
+                  src={firstPost?.jetpack_featured_media_url}
+                  className=".cocktail img"
+                />
+              </div>
+              <div className="section1-text-part">
+                <div className="item-text">
+                  <p className="frontend-text">
+                    {firstPost?.parsely?.meta["@type"]}{" "}
+                  </p>
+                  <p className="our-text"> . 1 Hour Ago</p>
+                </div>
+                <h2 className="optimize-header">
+                  {" "}
+                  {firstPost?.title?.rendered}
+                </h2>
+                <div className="text-body">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: firstPost?.content?.rendered.substring(0, 500),
+                    }}
+                    className="first-string-holder"
+                  ></div>
+                </div>
+
+                <div className="last-part">
+                  <p className="three-min">
+                    {" "}
+                    by {firstPost?.parsely?.meta?.creator}
+                  </p>
+
+                  <div className="link">
+                    <Link
+                      to={`details/${firstPost?.id}`}
+                      state={{ foo: "my name is this" }}
+                    >
+                      <div className="link">
+                        <p className="read-more">Read Full</p>
+                        <BsArrowRight />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+          <div className="cocktails-center">
+            {posts.map((post, index) => {
+              if (index > 0) {
+                return (
+                  <Card
+                    key={post?.id}
+                    id={post?.id}
+                    topic={post?.title?.rendered}
+                    body={post?.content?.rendered.substring(0, 400)}
+                    imgUrl={post.jetpack_featured_media_url}
+                    author={post?.parsely?.meta?.creator}
+                    type={post?.parsely?.meta["@type"]}
+                    time={post?.parsely?.meta?.datePublished}
+                  />
+                );
+              }
+            })}
+          </div>
+        </section>
+
+        <footer>
+          <h2 className="footer-header">Join our Team of Writers</h2>
+          <p className="footer-body">
+            On dasdas, writers earn a living doing what they love. Getting
+            started is easy. Just pay a one time $25 fee and everything is ready
+            to go.
+          </p>
+
+          <PayButton />
+        </footer>
+      </main>
+
+      {/* <div className="container">
         <main>
           <section className="section-1">
             <div className="section-1-image-part">
@@ -54,7 +138,7 @@ function HomePage(props) {
               </div>
               <h2 className="optimize-header"> {firstPost?.title?.rendered}</h2>
               <div className="text-body">
-                {/* {parse(`${firstPost?.content?.rendered}`)} */}
+              
                 <div
                   dangerouslySetInnerHTML={{
                     __html: firstPost?.content?.rendered,
@@ -65,26 +149,30 @@ function HomePage(props) {
 
               <div className="last-part">
                 <p className="three-min">3 Min Read</p>
-                {/* <Route path="/details"> */}
+                
                 <div className="link">
-                  <Link to="details">
+                  <Link
+                    to={`details/${firstPost?.id}`}
+                    state={{ foo: "my name is this" }}
+                  >
                     <div>
                       <p className="read-more">Read Full</p>
                       <BsArrowRight />
                     </div>
                   </Link>
                 </div>
-                {/* </Route> */}
+                
               </div>
             </div>
           </section>
+
           <div className="section2">
             {posts.map((post, index) => {
               if (index > 0) {
                 return (
                   <Card
                     key={post?.id}
-                    id={index}
+                    id={post?.id}
                     topic={post?.title?.rendered}
                     body={post?.content?.rendered}
                     imgUrl={post.jetpack_featured_media_url}
@@ -94,18 +182,17 @@ function HomePage(props) {
               }
             })}
           </div>
-          <footer>
-            <h2 className="footer-header">Join our Team of Writers</h2>
-            <p className="footer-body">
-              On dasdas, writers earn a living doing what they love. Getting
-              started is easy. Just pay a one time $25 fee and everything is
-              ready to go.
-            </p>
-
-            <PayButton />
-          </footer>
         </main>
       </div>
+      <footer>
+        <h2 className="footer-header">Join our Team of Writers</h2>
+        <p className="footer-body">
+          On dasdas, writers earn a living doing what they love. Getting started
+          is easy. Just pay a one time $25 fee and everything is ready to go.
+        </p>
+
+        <PayButton />
+      </footer> */}
     </>
   );
 }
