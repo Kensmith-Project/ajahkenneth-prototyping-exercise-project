@@ -31,10 +31,7 @@ function PayButton(props) {
           handleFlutterPayment({
             callback: (response) => {
               console.log(response);
-              // if (response.status === "sucessfull") {
-              //   alert("payment was sucessful");
-              // }
-              // closePaymentModal();
+              
             },
             onClose: () => {},
           });

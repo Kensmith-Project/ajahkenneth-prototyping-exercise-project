@@ -45,12 +45,7 @@ export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    // fetchPost: (state, action) => {
-    //   const postArr = state.posts.map((post) => post.id === action.payload);
-    //   // state.post = postArr.length > 0 ? postArr[0] : {};
-    //   state.post = postArr
-    //   console.log(state.post);
-    // },
+    
   },
   extraReducers: (builder) => {
     builder

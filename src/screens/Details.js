@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
-import { fetchPost, fetchPosts } from "../features/postSlice";
+import { fetchPost } from "../features/postSlice";
 import Card from "../components/Card";
 
 function Details({}) {
-  // console.log(state.location);
   const dispatch = useDispatch();
   const { detailsid } = useParams();
   const { post, posts, loading } = useSelector((state) => state.blogPost);
 
   useEffect(() => {
-    
-      dispatch(fetchPost(detailsid));
+    dispatch(fetchPost(detailsid));
   }, []);
   console.log(post);
   return (
@@ -25,8 +23,8 @@ function Details({}) {
       ) : (
         <main>
           <section className="section">
-            <p className="three-min"> by {post?.parsely?.meta?.creator}</p>
-            <h2>{post?.title?.rendered}</h2>
+            <p className="my-author"> by {post?.parsely?.meta?.creator}</p>
+            <h2 className="detail-title">{post?.title?.rendered}</h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: post?.content?.rendered,
@@ -34,7 +32,7 @@ function Details({}) {
               className="detail"
             ></div>
 
-            <h2>More Articles</h2>
+            <h2 className="more-article">More Articles</h2>
 
             <div className="cocktails-center">
               {posts.map((post, index) => {
@@ -49,6 +47,7 @@ function Details({}) {
                       author={post?.parsely?.meta?.creator}
                       type={post?.parsely?.meta["@type"]}
                       time={post?.parsely?.meta?.datePublished}
+                      src={post?.link}
                     />
                   );
                 }
