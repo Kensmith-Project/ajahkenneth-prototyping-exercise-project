@@ -9,21 +9,17 @@ import { fetchPosts, fetchPost } from "../features/postSlice";
 
 import { Link } from "react-router-dom";
 
-
 function HomePage(props) {
   const dispatch = useDispatch();
   const { loading, error, success, posts, post } = useSelector(
     (state) => state.blogPost
   );
-  
 
   useEffect(() => {
     if (posts.length < 1) {
       dispatch(fetchPosts());
     }
   }, []);
-
-  
 
   console.log(loading, error, success, posts, post);
   const firstPost = posts[0];
@@ -98,6 +94,7 @@ function HomePage(props) {
                     author={post?.parsely?.meta?.creator}
                     type={post?.parsely?.meta["@type"]}
                     time={post?.parsely?.meta?.datePublished}
+                    src={post?.link}
                   />
                 );
               }
@@ -117,8 +114,6 @@ function HomePage(props) {
           </div>
         </footer>
       </main>
-
-     
     </>
   );
 }

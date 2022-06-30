@@ -1787,6 +1787,7 @@ color: #2C2C2C;
 .detail{
   flex: 1;
   padding: 0px 20px;
+  width: 100%;
  
 }
 .my-author{
