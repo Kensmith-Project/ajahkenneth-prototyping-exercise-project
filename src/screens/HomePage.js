@@ -45,11 +45,8 @@ function HomePage(props) {
         <section className="section">
           <section>
             <section className="section-1">
-              <div className="img-container">
-                <img
-                  src={firstPost?.jetpack_featured_media_url}
-                  className=".cocktail img"
-                />
+              <div className="img-bo">
+                <img src={firstPost?.jetpack_featured_media_url} className="" />
               </div>
               <div className="section1-text-part">
                 <div className="item-text">
@@ -119,8 +116,9 @@ function HomePage(props) {
             started is easy. Just pay a one time $25 fee and everything is ready
             to go.
           </p>
-
-          <PayButton />
+          <div>
+            <PayButton />
+          </div>
         </footer>
       </main>
 
