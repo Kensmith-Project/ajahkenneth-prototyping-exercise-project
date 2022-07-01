@@ -1987,7 +1987,7 @@ nav {
   .detail {
     display: block;
     width: 100%;
-    overflow:scroll;
+    /* overflow:scroll; */
     
 
   }
