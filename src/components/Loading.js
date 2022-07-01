@@ -1,3 +1,9 @@
+/*
+    =================
+     Loading Indicator
+    =================
+    */
+
 const Loading = () => {
   return <div className="loader"></div>;
 };

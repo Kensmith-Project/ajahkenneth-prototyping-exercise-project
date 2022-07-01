@@ -1,5 +1,5 @@
 import React from "react";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { useFlutterwave } from "flutterwave-react-v3";
 
 function PayButton(props) {
   const config = {
@@ -31,10 +31,6 @@ function PayButton(props) {
           handleFlutterPayment({
             callback: (response) => {
               console.log(response);
-              // if (response.status === "sucessfull") {
-              //   alert("payment was sucessful");
-              // }
-              // closePaymentModal();
             },
             onClose: () => {},
           });

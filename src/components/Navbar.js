@@ -1,20 +1,14 @@
-// import React from "react";
-// import im from '../assets/dasdas.png'
-import { FiTwitter } from "react-icons/fi";
-import { BsDot } from "react-icons/bs";
-import { VscGlobe } from "react-icons/vsc";
-import { FaFigma } from "react-icons/fa";
-import { FiGithub } from "react-icons/fi";
-// import { FaBars } from "react-icons/fa";
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import { links, social } from "./Data";
+import {  social } from "./Data";
 import logo from "../assets/dasdas.png";
+//Navbar section
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  //Creating a toggle effect
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
@@ -47,16 +41,6 @@ const Navbar = () => {
             })}
           </ul>
         </div>
-        {/* <ul className="social-icons">
-          {social.map((socialIcon) => {
-            const { id, url, icon } = socialIcon;
-            return (
-              <li key={id}>
-                <a href={url}>{icon}</a>
-              </li>
-            );
-          })}
-        </ul> */}
       </div>
     </nav>
   );

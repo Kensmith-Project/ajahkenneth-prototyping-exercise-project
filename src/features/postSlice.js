@@ -1,7 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+/*
+    =================
+     Fetch the cached data from the localstorage
+    =================
+    */
 
-const cachedPost = localStorage.getItem('posts') ? JSON.parse(localStorage.getItem('posts')) : [];
+const cachedPost = localStorage.getItem("posts")
+  ? JSON.parse(localStorage.getItem("posts"))
+  : [];
 
 const initialState = {
   loading: false,
@@ -14,7 +21,14 @@ const initialState = {
 export const fetchPosts = createAsyncThunk("blog/post", async (_, thunkAPI) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`);
-    localStorage.setItem('posts', JSON.stringify(response.data))
+
+
+    /*
+    =================
+     Catching the fetched data to the localstorage
+    =================
+    */
+    localStorage.setItem("posts", JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     const message = (error.response && error.response.data) || error.toString();
@@ -44,14 +58,10 @@ export const fetchPost = createAsyncThunk(
 export const postSlice = createSlice({
   name: "post",
   initialState,
-  reducers: {
-    // fetchPost: (state, action) => {
-    //   const postArr = state.posts.map((post) => post.id === action.payload);
-    //   // state.post = postArr.length > 0 ? postArr[0] : {};
-    //   state.post = postArr
-    //   console.log(state.post);
-    // },
-  },
+  reducers: {},
+
+
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
