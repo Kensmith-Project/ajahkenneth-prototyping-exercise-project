@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const cachedPost = localStorage.getItem('posts') ? JSON.parse(localStorage.getItem('posts')) : [];
+const cachedPost = localStorage.getItem("posts")
+  ? JSON.parse(localStorage.getItem("posts"))
+  : [];
 
 const initialState = {
   loading: false,
@@ -14,7 +16,7 @@ const initialState = {
 export const fetchPosts = createAsyncThunk("blog/post", async (_, thunkAPI) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`);
-    localStorage.setItem('posts', JSON.stringify(response.data))
+    localStorage.setItem("posts", JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     const message = (error.response && error.response.data) || error.toString();
@@ -44,9 +46,7 @@ export const fetchPost = createAsyncThunk(
 export const postSlice = createSlice({
   name: "post",
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {

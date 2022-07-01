@@ -1,9 +1,6 @@
-
-
-
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import { links, social } from "./Data";
+import {  social } from "./Data";
 import logo from "../assets/dasdas.png";
 
 const Navbar = () => {
@@ -42,7 +39,6 @@ const Navbar = () => {
             })}
           </ul>
         </div>
-        
       </div>
     </nav>
   );
