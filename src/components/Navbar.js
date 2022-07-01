@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import {  social } from "./Data";
 import logo from "../assets/dasdas.png";
+//Navbar section
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  //Creating a toggle effect
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };

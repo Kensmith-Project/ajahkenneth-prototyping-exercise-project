@@ -5,6 +5,12 @@ import { VscGlobe } from "react-icons/vsc";
 import { FaFigma } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 
+/*
+    =================
+     Data used to populate the navbar ui
+    =================
+    */
+
 export const social = [
   {
     id: 1,

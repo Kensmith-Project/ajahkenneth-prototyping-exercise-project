@@ -1,6 +1,11 @@
 import React from "react";
 
 import { BsArrowRight } from "react-icons/bs";
+/*
+    =================
+    A reusable component strictly used on the Detail screen components
+    =================
+    */
 
 function Card2({ imgUrl, time_ago, id, author, body, type, topic, src }) {
   return (

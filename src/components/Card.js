@@ -2,6 +2,11 @@ import React from "react";
 
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+/*
+    =================
+     Reusable component, strictly used to populate the homepage component
+    =================
+    */
 
 function Card({ imgUrl, time_ago, id, author, body, type, topic, src }) {
   return (

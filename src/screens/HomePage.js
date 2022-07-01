@@ -10,6 +10,14 @@ import { fetchPosts } from "../features/postSlice";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 
+
+
+/*
+    =================
+    Rendering the homepage components, using map to populate and render the card component
+    =================
+    */
+
 function HomePage(props) {
   const dispatch = useDispatch();
   const { loading, error, success, posts, post } = useSelector(
@@ -91,6 +99,7 @@ function HomePage(props) {
                   </div>
                 </section>
               </section>
+              
               <div className="cocktails-center">
                 {posts.map((post, index) => {
                   if (index > 0) {
