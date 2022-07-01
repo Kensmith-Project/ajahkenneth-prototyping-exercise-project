@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import {  social } from "./Data";
+import { social } from "./Data";
 import logo from "../assets/dasdas.png";
+import { Link } from "react-router-dom";
 //Navbar section
 
 const Navbar = () => {
@@ -24,7 +25,10 @@ const Navbar = () => {
     <nav>
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} className="logo" alt="logo" />
+          <Link to="/">
+            <img src={logo} className="logo" alt="logo" />
+          </Link>
+
           <button className="nav-toggle" onClick={toggleLinks}>
             <FaBars />
           </button>
