@@ -24,6 +24,10 @@ function Details({}) {
       ) : (
         <main>
           <section className="section">
+            <p className="our-text">
+              <span className="time-inline"></span>{" "}
+              {post?.parsely?.meta["datePublished"]}
+            </p>
             <p className="my-author"> by {post?.parsely?.meta?.creator}</p>
             <h2 className="detail-title">{post?.title?.rendered}</h2>
             <div
