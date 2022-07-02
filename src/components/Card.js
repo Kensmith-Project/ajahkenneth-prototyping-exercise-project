@@ -21,7 +21,9 @@ function Card({ imgUrl, time_ago, id, author, body, type, topic, src }) {
           <div className="item-text">
             <p className="frontend-text">{type}</p>
           </div>
-          <p className="our-text"><span className="time-inline">Published on:</span> {time_ago}</p>
+          <p className="our-text">
+            <span className="time-inline">Date/GMT:</span> {time_ago}
+          </p>
           <p className="topic-text">
             <a href={src}>{topic}</a>
           </p>

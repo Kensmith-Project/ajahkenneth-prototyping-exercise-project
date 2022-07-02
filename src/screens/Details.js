@@ -25,17 +25,18 @@ function Details({}) {
         <main>
           <section className="section">
             <p className="our-text">
-              <span className="time-inline"></span>{" "}
-              {post?.parsely?.meta["datePublished"]}
+              <span className="time-inline"></span> {post?.date_gmt}
             </p>
             <p className="my-author"> by {post?.parsely?.meta?.creator}</p>
             <h2 className="detail-title">{post?.title?.rendered}</h2>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post?.content?.rendered,
-              }}
-              className="detail"
-            ></div>
+            <div className="control-overflow">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: post?.content?.rendered.substring(0, 7000),
+                }}
+                className="detail"
+              ></div>
+            </div>
 
             <h2 className="more-article">More Articles</h2>
 
@@ -51,7 +52,7 @@ function Details({}) {
                       imgUrl={post.jetpack_featured_media_url}
                       author={post?.parsely?.meta?.creator}
                       type={post?.parsely?.meta["@type"]}
-                      time_ago={post?.parsely?.meta?.datePublished}
+                      time_ago={post?.date_gmt}
                       src={post?.link}
                     />
                   );
