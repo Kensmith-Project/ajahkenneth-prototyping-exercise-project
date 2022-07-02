@@ -56,8 +56,8 @@ function HomePage(props) {
                         {firstPost?.parsely?.meta["@type"]}{" "}
                       </p>
                       <p className="our-text">
-                        <span className="time-inline">Published on:</span>{" "}
-                        {firstPost?.parsely?.meta["datePublished"]}
+                        <span className="time-inline">Date/GMT:</span>{" "}
+                        {firstPost?.date_gmt}
                       </p>
                     </div>
                     <h2 className="optimize-header">
@@ -85,7 +85,7 @@ function HomePage(props) {
                       <div className="link">
                         <Link
                           to={`details/${firstPost?.id}`}
-                          state={{ foo: "my name is this" }}
+                          // state={{ foo: "my name is this" }}
                         >
                           <div className="link">
                             <p className="read-more">Read Full</p>
@@ -110,7 +110,7 @@ function HomePage(props) {
                         imgUrl={post.jetpack_featured_media_url}
                         author={post?.parsely?.meta?.creator}
                         type={post?.parsely?.meta["@type"]}
-                        time_ago={post?.parsely?.meta["datePublished"]}
+                        time_ago={post?.date_gmt}
                         src={post?.link}
                       />
                     );
