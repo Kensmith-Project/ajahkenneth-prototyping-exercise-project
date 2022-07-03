@@ -1635,39 +1635,25 @@ Cocktail
   }
 }
 .first-string-holder{
- 
 line-height: 21px;
-
 margin-top: 8px;
 justify-content: center;
-
-
-
 color: #2C2C2C;
 }
-
-
 
 @media screen and (min-width: 576px) {
   .section-1 {
     grid-template-columns: repeat(auto-fill, minmax(360.8px, 1fr));
   }
-  /* .detail img{
+  .detail img{
     width: 60%;
     height: 60%;
     margin: 0 auto;
     object-fit: cover;
     cursor: pointer;
-  } */
+  }
 }
-/* .detail{
-  flex: 1;
-  padding: 0px 20px;
-  width: 100%;
-  display: block;
-  overflow: hidden;
- 
-} */
+
 .my-author{
   font-size: 25px;
   font-weight: 900px;
@@ -1923,14 +1909,17 @@ nav {
   width: 100%;
     /* object-fit: cover; */
 }
-.detail img{
-  
+
+.wp-caption {
+  max-width: 100%;
+}
+
+.wp-caption > a > img {
+  max-height: 350px;
+  margin-left: 0;
+  margin-right: 0;
   object-fit: cover;
-  cursor: pointer;
-  flex: 1;
-
-} 
-
+}
 
 @media screen and (max-width: 576px) {
   .detail  {
